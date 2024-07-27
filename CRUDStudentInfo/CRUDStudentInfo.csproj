@@ -53,6 +53,12 @@
     <Compile Include="FormCRUDAlunos.Designer.cs">
       <DependentUpon>FormCRUDAlunos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCRUDDisciplinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCRUDDisciplinas.Designer.cs">
+      <DependentUpon>FormCRUDDisciplinas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCRUDAlunos.resx">
       <DependentUpon>FormCRUDAlunos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCRUDDisciplinas.resx">
+      <DependentUpon>FormCRUDDisciplinas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

@@ -47,15 +47,21 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnSubjects = new System.Windows.Forms.Button();
+            this.lblSkills = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewStudent)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(85, 104);
+            this.lblTitle.Location = new System.Drawing.Point(85, 64);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(170, 20);
             this.lblTitle.TabIndex = 0;
@@ -63,7 +69,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(89, 171);
+            this.txtName.Location = new System.Drawing.Point(89, 131);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(185, 21);
@@ -72,7 +78,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(34, 179);
+            this.lblName.Location = new System.Drawing.Point(34, 139);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 2;
@@ -81,7 +87,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(34, 277);
+            this.lblPhone.Location = new System.Drawing.Point(34, 237);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(38, 13);
             this.lblPhone.TabIndex = 6;
@@ -89,7 +95,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(89, 274);
+            this.txtPhone.Location = new System.Drawing.Point(89, 234);
             this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(185, 21);
@@ -98,7 +104,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(34, 324);
+            this.lblEmail.Location = new System.Drawing.Point(34, 284);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 8;
@@ -106,7 +112,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(89, 321);
+            this.txtEmail.Location = new System.Drawing.Point(89, 281);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(185, 21);
@@ -115,7 +121,7 @@
             // lblSex
             // 
             this.lblSex.AutoSize = true;
-            this.lblSex.Location = new System.Drawing.Point(34, 227);
+            this.lblSex.Location = new System.Drawing.Point(34, 187);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(25, 13);
             this.lblSex.TabIndex = 9;
@@ -127,7 +133,7 @@
             this.cmBoxSex.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cmBoxSex.Location = new System.Drawing.Point(89, 224);
+            this.cmBoxSex.Location = new System.Drawing.Point(89, 184);
             this.cmBoxSex.Name = "cmBoxSex";
             this.cmBoxSex.Size = new System.Drawing.Size(185, 21);
             this.cmBoxSex.TabIndex = 10;
@@ -135,9 +141,9 @@
             // dgViewStudent
             // 
             this.dgViewStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgViewStudent.Location = new System.Drawing.Point(352, 104);
+            this.dgViewStudent.Location = new System.Drawing.Point(352, 64);
             this.dgViewStudent.Name = "dgViewStudent";
-            this.dgViewStudent.Size = new System.Drawing.Size(543, 363);
+            this.dgViewStudent.Size = new System.Drawing.Size(543, 467);
             this.dgViewStudent.TabIndex = 11;
             this.dgViewStudent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewStudent_CellClick);
             // 
@@ -152,7 +158,7 @@
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(37, 379);
+            this.btnAdd.Location = new System.Drawing.Point(37, 327);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 32);
             this.btnAdd.TabIndex = 13;
@@ -163,7 +169,7 @@
             // btnUpdate
             // 
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Location = new System.Drawing.Point(118, 379);
+            this.btnUpdate.Location = new System.Drawing.Point(118, 327);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 32);
             this.btnUpdate.TabIndex = 14;
@@ -174,7 +180,7 @@
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(199, 379);
+            this.btnDelete.Location = new System.Drawing.Point(199, 327);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 32);
             this.btnDelete.TabIndex = 15;
@@ -185,7 +191,7 @@
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(37, 435);
+            this.btnCancel.Location = new System.Drawing.Point(37, 365);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(237, 32);
             this.btnCancel.TabIndex = 16;
@@ -225,11 +231,55 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnSubjects
+            // 
+            this.btnSubjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubjects.Location = new System.Drawing.Point(37, 403);
+            this.btnSubjects.Name = "btnSubjects";
+            this.btnSubjects.Size = new System.Drawing.Size(237, 32);
+            this.btnSubjects.TabIndex = 18;
+            this.btnSubjects.Text = "Manage Subjects";
+            this.btnSubjects.UseVisualStyleBackColor = true;
+            this.btnSubjects.Click += new System.EventHandler(this.btnSubjects_Click);
+            // 
+            // lblSkills
+            // 
+            this.lblSkills.AutoSize = true;
+            this.lblSkills.Location = new System.Drawing.Point(21, 489);
+            this.lblSkills.Name = "lblSkills";
+            this.lblSkills.Size = new System.Drawing.Size(75, 13);
+            this.lblSkills.TabIndex = 42;
+            this.lblSkills.Text = "Sponsored by:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(209, 449);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(83, 83);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(102, 461);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(101, 71);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 41;
+            this.pictureBox2.TabStop = false;
+            // 
             // FormCRUDAlunos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 478);
+            this.ClientSize = new System.Drawing.Size(903, 538);
+            this.Controls.Add(this.lblSkills);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnSubjects);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
@@ -248,10 +298,12 @@
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormCRUDAlunos";
-            this.Text = "Form1";
+            this.Text = "FormCRUDAlunos";
             ((System.ComponentModel.ISupportInitialize)(this.dgViewStudent)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,6 +329,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSubjects;
+        private System.Windows.Forms.Label lblSkills;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

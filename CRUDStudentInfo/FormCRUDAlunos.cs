@@ -34,6 +34,7 @@ namespace CRUDStudentInfo
                 dgViewStudent.DataSource = dt;
             }
         }
+
         public void ClearAllData()
         {
             txtName.Text = "";
@@ -71,10 +72,9 @@ namespace CRUDStudentInfo
 
                 cmd.ExecuteNonQuery();
                 con.Close();
-                MessageBox.Show("Data Inserted Successfully");
+                MessageBox.Show("Student Added Successfully");
                 ShowDataOnGridView();
                 ClearAllData();
-
             }
         }
 
@@ -95,7 +95,6 @@ namespace CRUDStudentInfo
                 MessageBox.Show("Data Updated Successfully");
                 ShowDataOnGridView();
                 ClearAllData();
-
             }
         }
 
@@ -124,6 +123,27 @@ namespace CRUDStudentInfo
             this.Close();
         }
 
-        // CRUD that allows you to fetch data directly from SQL.
+        private void btnSubjects_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgViewStudent.CurrentRow != null)
+                {
+                    int studentId = Convert.ToInt32(dgViewStudent.CurrentRow.Cells["StudentID"].Value);
+                    string studentName = dgViewStudent.CurrentRow.Cells["Name"].Value.ToString(); // Get the student name
+                    FormCRUDDisciplinas formDisciplinas = new FormCRUDDisciplinas(studentId, studentName);
+                    formDisciplinas.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Select a student first.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
     }
 }
