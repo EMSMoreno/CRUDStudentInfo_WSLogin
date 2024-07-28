@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCRUDDisciplinas));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -41,13 +42,14 @@
             this.txtSubjectName = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgViewSubject = new System.Windows.Forms.DataGridView();
-            this.lblSID = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtStudentName = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblSkills = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,7 +63,7 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 57);
+            this.panel1.Size = new System.Drawing.Size(962, 57);
             this.panel1.TabIndex = 18;
             // 
             // label2
@@ -79,7 +81,7 @@
             this.btnClose.BackColor = System.Drawing.Color.White;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(823, 3);
+            this.btnClose.Location = new System.Drawing.Point(925, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(34, 34);
             this.btnClose.TabIndex = 16;
@@ -89,7 +91,7 @@
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(56, 250);
+            this.btnCancel.Location = new System.Drawing.Point(60, 263);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(237, 32);
             this.btnCancel.TabIndex = 31;
@@ -99,7 +101,7 @@
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(218, 212);
+            this.btnDelete.Location = new System.Drawing.Point(222, 225);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 32);
             this.btnDelete.TabIndex = 30;
@@ -110,7 +112,7 @@
             // btnUpdate
             // 
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Location = new System.Drawing.Point(137, 212);
+            this.btnUpdate.Location = new System.Drawing.Point(141, 225);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 32);
             this.btnUpdate.TabIndex = 29;
@@ -121,7 +123,7 @@
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(56, 212);
+            this.btnAdd.Location = new System.Drawing.Point(60, 225);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 32);
             this.btnAdd.TabIndex = 28;
@@ -132,7 +134,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(35, 340);
+            this.lblEmail.Location = new System.Drawing.Point(36, 379);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(78, 13);
             this.lblEmail.TabIndex = 25;
@@ -141,7 +143,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(36, 173);
+            this.lblPhone.Location = new System.Drawing.Point(40, 150);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(77, 13);
             this.lblPhone.TabIndex = 23;
@@ -149,7 +151,7 @@
             // 
             // txtSubjectName
             // 
-            this.txtSubjectName.Location = new System.Drawing.Point(116, 170);
+            this.txtSubjectName.Location = new System.Drawing.Point(120, 147);
             this.txtSubjectName.Multiline = true;
             this.txtSubjectName.Name = "txtSubjectName";
             this.txtSubjectName.Size = new System.Drawing.Size(177, 21);
@@ -167,34 +169,25 @@
             // 
             // dgViewSubject
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewSubject.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgViewSubject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgViewSubject.Location = new System.Drawing.Point(356, 63);
             this.dgViewSubject.Name = "dgViewSubject";
-            this.dgViewSubject.Size = new System.Drawing.Size(502, 395);
+            this.dgViewSubject.Size = new System.Drawing.Size(607, 395);
             this.dgViewSubject.TabIndex = 33;
-            // 
-            // lblSID
-            // 
-            this.lblSID.AutoSize = true;
-            this.lblSID.Location = new System.Drawing.Point(53, 132);
-            this.lblSID.Name = "lblSID";
-            this.lblSID.Size = new System.Drawing.Size(60, 13);
-            this.lblSID.TabIndex = 34;
-            this.lblSID.Text = "Subject ID:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(116, 129);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(60, 21);
-            this.textBox1.TabIndex = 36;
+            this.dgViewSubject.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewSubjects_CellClick);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SlateGray;
-            this.panel2.Location = new System.Drawing.Point(12, 301);
+            this.panel2.Location = new System.Drawing.Point(12, 319);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(315, 16);
             this.panel2.TabIndex = 37;
@@ -202,7 +195,7 @@
             // txtStudentName
             // 
             this.txtStudentName.Enabled = false;
-            this.txtStudentName.Location = new System.Drawing.Point(116, 337);
+            this.txtStudentName.Location = new System.Drawing.Point(116, 376);
             this.txtStudentName.Multiline = true;
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(211, 21);
@@ -212,7 +205,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(223, 375);
+            this.pictureBox1.Location = new System.Drawing.Point(868, 464);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(83, 83);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -222,7 +215,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(116, 387);
+            this.pictureBox2.Location = new System.Drawing.Point(761, 476);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(101, 71);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -232,24 +225,53 @@
             // lblSkills
             // 
             this.lblSkills.AutoSize = true;
-            this.lblSkills.Location = new System.Drawing.Point(35, 415);
+            this.lblSkills.Location = new System.Drawing.Point(680, 504);
             this.lblSkills.Name = "lblSkills";
             this.lblSkills.Size = new System.Drawing.Size(75, 13);
             this.lblSkills.TabIndex = 39;
             this.lblSkills.Text = "Sponsored by:";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(116, 425);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(215, 95);
+            this.listBox1.TabIndex = 40;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(36, 348);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(155, 13);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "This Subject is associated with:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(36, 409);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 13);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "or this Class of Students:";
+            // 
             // FormCRUDDisciplinas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 465);
+            this.ClientSize = new System.Drawing.Size(963, 551);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lblSkills);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtStudentName);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.lblSID);
             this.Controls.Add(this.dgViewSubject);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
@@ -260,6 +282,7 @@
             this.Controls.Add(this.txtSubjectName);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormCRUDDisciplinas";
             this.Text = "FormCRUDDisciplinas";
             this.panel1.ResumeLayout(false);
@@ -285,12 +308,13 @@
         private System.Windows.Forms.TextBox txtSubjectName;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgViewSubject;
-        private System.Windows.Forms.Label lblSID;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtStudentName;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblSkills;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }

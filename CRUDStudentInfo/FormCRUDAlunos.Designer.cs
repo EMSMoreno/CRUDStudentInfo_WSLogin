@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCRUDAlunos));
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -51,6 +52,7 @@
             this.lblSkills = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnManageTeachers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewStudent)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -141,6 +143,14 @@
             // dgViewStudent
             // 
             this.dgViewStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgViewStudent.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgViewStudent.Location = new System.Drawing.Point(352, 64);
             this.dgViewStudent.Name = "dgViewStudent";
             this.dgViewStudent.Size = new System.Drawing.Size(543, 467);
@@ -245,7 +255,7 @@
             // lblSkills
             // 
             this.lblSkills.AutoSize = true;
-            this.lblSkills.Location = new System.Drawing.Point(21, 489);
+            this.lblSkills.Location = new System.Drawing.Point(625, 582);
             this.lblSkills.Name = "lblSkills";
             this.lblSkills.Size = new System.Drawing.Size(75, 13);
             this.lblSkills.TabIndex = 42;
@@ -254,7 +264,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(209, 449);
+            this.pictureBox1.Location = new System.Drawing.Point(813, 542);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(83, 83);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -264,18 +274,30 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(102, 461);
+            this.pictureBox2.Location = new System.Drawing.Point(706, 554);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(101, 71);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 41;
             this.pictureBox2.TabStop = false;
             // 
+            // btnManageTeachers
+            // 
+            this.btnManageTeachers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageTeachers.Location = new System.Drawing.Point(37, 441);
+            this.btnManageTeachers.Name = "btnManageTeachers";
+            this.btnManageTeachers.Size = new System.Drawing.Size(237, 32);
+            this.btnManageTeachers.TabIndex = 43;
+            this.btnManageTeachers.Text = "Manage Teachers";
+            this.btnManageTeachers.UseVisualStyleBackColor = true;
+            this.btnManageTeachers.Click += new System.EventHandler(this.btnManageTeachers_Click);
+            // 
             // FormCRUDAlunos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 538);
+            this.ClientSize = new System.Drawing.Size(903, 629);
+            this.Controls.Add(this.btnManageTeachers);
             this.Controls.Add(this.lblSkills);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
@@ -333,6 +355,7 @@
         private System.Windows.Forms.Label lblSkills;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnManageTeachers;
     }
 }
 

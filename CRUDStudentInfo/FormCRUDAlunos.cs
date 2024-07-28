@@ -33,6 +33,16 @@ namespace CRUDStudentInfo
                 adapter.Fill(dt);
                 dgViewStudent.DataSource = dt;
             }
+
+            // Set AutoSizeColumnsMode to Fill
+            dgViewStudent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Adjust FillWeight if necessary
+            dgViewStudent.Columns["StudentID"].FillWeight = 15; // Set less weight
+            dgViewStudent.Columns["Name"].FillWeight = 30;
+            dgViewStudent.Columns["Sex"].FillWeight = 10;
+            dgViewStudent.Columns["Phone"].FillWeight = 15;
+            dgViewStudent.Columns["Email"].FillWeight = 20;
         }
 
         public void ClearAllData()
@@ -51,12 +61,15 @@ namespace CRUDStudentInfo
 
         public void dgViewStudent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtName.Text = this.dgViewStudent.CurrentRow.Cells["Name"].Value.ToString();
-            cmBoxSex.Text = this.dgViewStudent.CurrentRow.Cells["Sex"].Value.ToString();
-            txtPhone.Text = this.dgViewStudent.CurrentRow.Cells["Phone"].Value.ToString();
-            txtEmail.Text = this.dgViewStudent.CurrentRow.Cells["Email"].Value.ToString();
-
-            lblSID.Text = this.dgViewStudent.CurrentRow.Cells["StudentID"].Value.ToString();
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgViewStudent.Rows[e.RowIndex];
+                txtName.Text = row.Cells["Name"].Value.ToString();
+                cmBoxSex.Text = row.Cells["Sex"].Value.ToString();
+                txtPhone.Text = row.Cells["Phone"].Value.ToString();
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
+                lblSID.Text = row.Cells["StudentID"].Value.ToString();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -136,7 +149,7 @@ namespace CRUDStudentInfo
                 }
                 else
                 {
-                    MessageBox.Show("Select a student first.");
+                    MessageBox.Show("Select a student first!");
                 }
             }
             catch (Exception ex)
@@ -145,5 +158,26 @@ namespace CRUDStudentInfo
             }
         }
 
+        private void btnManageTeachers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgViewStudent.CurrentRow != null)
+                {
+                    int studentId = Convert.ToInt32(dgViewStudent.CurrentRow.Cells["StudentID"].Value);
+                    string studentName = dgViewStudent.CurrentRow.Cells["Name"].Value.ToString();
+                    FormCRUDProfessores formProfessores = new FormCRUDProfessores(studentId, studentName);
+                    formProfessores.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Select a student first!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
     }
 }

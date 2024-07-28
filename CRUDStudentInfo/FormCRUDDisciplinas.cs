@@ -8,6 +8,8 @@ namespace CRUDStudentInfo
 {
     public partial class FormCRUDDisciplinas : Form
     {
+        public event EventHandler TeacherAssigned;
+
         public DataGridView SubjectDataGridView
         {
             get { return dgViewSubject; }
@@ -25,24 +27,18 @@ namespace CRUDStudentInfo
         SqlCommand cmd;
         SqlDataAdapter adapter;
         DataTable dt;
-        private int studentId;
 
-        public void ShowDataOnGridView()
+        public FormCRUDDisciplinas(int studentId, string studentName)
         {
-            using (con = new SqlConnection(cs))
-            {
-                adapter = new SqlDataAdapter("Select * From Subjects Where StudentID = @studentId", con);
-                adapter.SelectCommand.Parameters.AddWithValue("@studentId", studentId);
-                dt = new DataTable();
-                adapter.Fill(dt);
-                dgViewSubject.DataSource = dt;
-            }
-        }
+            InitializeComponent();
+            _studentId = studentId;
+            _studentName = studentName;
+            txtStudentName.Text = _studentName;
+            ShowDataOnGridView();
+            LoadSubjectsForStudent();
 
-        public void ClearAllData()
-        {
-            txtSubjectName.Text = "";
-            txtStudentName.Text = "";
+            // Set AutoSizeColumnsMode to Fill
+            dgViewSubject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public FormCRUDDisciplinas()
@@ -52,51 +48,75 @@ namespace CRUDStudentInfo
             LoadSubjectsForStudent();
         }
 
-        public FormCRUDDisciplinas(int studentId, string studentName)
+        public void ShowDataOnGridView()
         {
-            InitializeComponent();
-
-            _studentId = studentId;
-            _studentName = studentName;
-
-            // Check if the txtStudentName control is initialized and set the student name
-            if (txtStudentName != null)
+            using (con = new SqlConnection(cs))
             {
-                txtStudentName.Text = _studentName; // Display the student's name
-            }
+                string query = "SELECT s.SubjectID, s.SubjectName, ISNULL(t.TeacherName, 'No Teacher Assigned') AS TeacherName FROM Subjects s LEFT JOIN Teachers t ON s.TeacherID = t.TeacherID WHERE s.StudentID = @studentId";
+                adapter = new SqlDataAdapter(query, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@studentId", _studentId);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgViewSubject.DataSource = dt;
 
-            LoadSubjectsForStudent();
+                // Set AutoSizeColumnsMode to Fill
+                dgViewSubject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                dgViewSubject.Columns["SubjectID"].FillWeight = 5;  // Less weight for SubjectID
+                dgViewSubject.Columns["SubjectName"].FillWeight = 15;
+                dgViewSubject.Columns["TeacherName"].FillWeight = 15;
+
+                // Center the text in all columns
+                foreach (DataGridViewColumn column in dgViewSubject.Columns)
+                {
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+            }
+        }
+
+        public void ClearAllData()
+        {
+            txtSubjectName.Text = "";
+            txtStudentName.Text = "";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtSubjectName.Text))
-            {
-                try
-                {
-                    using (con = new SqlConnection(cs))
-                    {
-                        con.Open();
-                        cmd = new SqlCommand("INSERT INTO Subjects (SubjectName, StudentID) VALUES (@subjectName, @studentId)", con);
-                        cmd.Parameters.AddWithValue("@subjectName", txtSubjectName.Text);
-                        cmd.Parameters.AddWithValue("@studentId", _studentId); // Use the student ID from the constructor
-
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-
-                        MessageBox.Show("Subject added successfully.");
-                        LoadSubjectsForStudent(); // Refresh the subjects list after adding
-                        ClearAllData(); // Clear the input field
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
-                }
-            }
-            else
+            if (string.IsNullOrEmpty(txtSubjectName.Text))
             {
                 MessageBox.Show("Please enter a subject name.");
+                return;
+            }
+
+            using (con = new SqlConnection(cs))
+            {
+                con.Open();
+
+                // Check if the subject already exists for the student
+                cmd = new SqlCommand("SELECT COUNT(*) FROM Subjects WHERE SubjectName = @subjectName AND StudentID = @studentID", con);
+                cmd.Parameters.AddWithValue("@subjectName", txtSubjectName.Text);
+                cmd.Parameters.AddWithValue("@studentID", _studentId);
+                int subjectCount = (int)cmd.ExecuteScalar();
+
+                if (subjectCount > 0)
+                {
+                    MessageBox.Show("This subject already exists for the student.");
+                    return;
+                }
+
+                // Insert the subject for the student
+                cmd = new SqlCommand("INSERT INTO Subjects (SubjectName, StudentID) VALUES (@subjectName, @studentID)", con);
+                cmd.Parameters.AddWithValue("@subjectName", txtSubjectName.Text);
+                cmd.Parameters.AddWithValue("@studentID", _studentId);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Subject Added Successfully");
+
+                // Trigger the TeacherAssigned event
+                TeacherAssigned?.Invoke(this, EventArgs.Empty);
+                ShowDataOnGridView();
+                ClearAllData();
             }
         }
 
@@ -118,7 +138,7 @@ namespace CRUDStudentInfo
                         con.Close();
 
                         MessageBox.Show("Subject updated successfully.");
-                        LoadSubjectsForStudent(); // Refresh the subjects list after updating
+                        ShowDataOnGridView(); // Refresh the subjects list after updating
                         ClearAllData();
                     }
                 }
@@ -131,6 +151,11 @@ namespace CRUDStudentInfo
             {
                 MessageBox.Show("Please select a subject and enter a new subject name.");
             }
+
+            // Trigger the TeacherAssigned event
+            TeacherAssigned?.Invoke(this, EventArgs.Empty);
+            ShowDataOnGridView();
+            ClearAllData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -150,7 +175,7 @@ namespace CRUDStudentInfo
                         con.Close();
 
                         MessageBox.Show("Subject deleted successfully.");
-                        LoadSubjectsForStudent(); // Refresh the subjects list after deletion
+                        ShowDataOnGridView(); // Refresh the subjects list after deletion
                         ClearAllData();
                     }
                 }
@@ -175,7 +200,7 @@ namespace CRUDStudentInfo
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dgViewSubject.Rows[e.RowIndex];
-                lblSID.Text = row.Cells["SubjectID"].Value.ToString();
+                //lblSID.Text = row.Cells["SubjectID"].Value.ToString();
                 txtSubjectName.Text = row.Cells["SubjectName"].Value.ToString();
             }
         }
@@ -184,7 +209,12 @@ namespace CRUDStudentInfo
         {
             using (con = new SqlConnection(cs))
             {
-                string query = "SELECT * FROM Subjects WHERE StudentID = @studentId";
+                string query = @"
+                    SELECT s.SubjectID, s.SubjectName, t.TeacherName 
+                    FROM Subjects s 
+                    LEFT JOIN Teachers t ON s.SubjectID = t.SubjectID 
+                    WHERE s.StudentID = @studentId";
+
                 adapter = new SqlDataAdapter(query, con);
                 adapter.SelectCommand.Parameters.AddWithValue("@studentId", _studentId);
                 dt = new DataTable();
@@ -193,5 +223,17 @@ namespace CRUDStudentInfo
             }
         }
 
+        private void btnAssignTeacher_Click(object sender, EventArgs e)
+        {
+            FormCRUDProfessores formTeachers = new FormCRUDProfessores(_studentId, _studentName);
+            formTeachers.TeacherAssigned += FormTeachers_TeacherAssigned;
+            formTeachers.ShowDialog();
+        }
+
+        private void FormTeachers_TeacherAssigned(object sender, EventArgs e)
+        {
+            // Refresh subjects DataGridView to show assigned teachers
+            LoadSubjectsForStudent();
+        }
     }
 }

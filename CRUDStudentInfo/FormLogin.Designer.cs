@@ -104,9 +104,9 @@
             this.lblSubtitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtitle.Location = new System.Drawing.Point(90, 56);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(345, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(313, 20);
             this.lblSubtitle.TabIndex = 6;
-            this.lblSubtitle.Text = "World Skills Portugal 2024 Pre-Selection Project";
+            this.lblSubtitle.Text = "World Skills Portugal 2024 Regional Project";
             // 
             // btnLogin
             // 
