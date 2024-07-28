@@ -37,7 +37,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblEmail = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtSubjectName = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -47,7 +46,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblSkills = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxClasses = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -91,7 +90,7 @@
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(60, 263);
+            this.btnCancel.Location = new System.Drawing.Point(60, 207);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(237, 32);
             this.btnCancel.TabIndex = 31;
@@ -101,7 +100,7 @@
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(222, 225);
+            this.btnDelete.Location = new System.Drawing.Point(222, 169);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 32);
             this.btnDelete.TabIndex = 30;
@@ -112,7 +111,7 @@
             // btnUpdate
             // 
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Location = new System.Drawing.Point(141, 225);
+            this.btnUpdate.Location = new System.Drawing.Point(141, 169);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 32);
             this.btnUpdate.TabIndex = 29;
@@ -123,7 +122,7 @@
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(60, 225);
+            this.btnAdd.Location = new System.Drawing.Point(60, 169);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 32);
             this.btnAdd.TabIndex = 28;
@@ -131,19 +130,10 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(36, 379);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(78, 13);
-            this.lblEmail.TabIndex = 25;
-            this.lblEmail.Text = "Student Name:";
-            // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(40, 150);
+            this.lblPhone.Location = new System.Drawing.Point(40, 132);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(77, 13);
             this.lblPhone.TabIndex = 23;
@@ -151,7 +141,7 @@
             // 
             // txtSubjectName
             // 
-            this.txtSubjectName.Location = new System.Drawing.Point(120, 147);
+            this.txtSubjectName.Location = new System.Drawing.Point(120, 129);
             this.txtSubjectName.Multiline = true;
             this.txtSubjectName.Name = "txtSubjectName";
             this.txtSubjectName.Size = new System.Drawing.Size(177, 21);
@@ -187,7 +177,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SlateGray;
-            this.panel2.Location = new System.Drawing.Point(12, 319);
+            this.panel2.Location = new System.Drawing.Point(35, 245);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(315, 16);
             this.panel2.TabIndex = 37;
@@ -195,10 +185,10 @@
             // txtStudentName
             // 
             this.txtStudentName.Enabled = false;
-            this.txtStudentName.Location = new System.Drawing.Point(116, 376);
+            this.txtStudentName.Location = new System.Drawing.Point(63, 316);
             this.txtStudentName.Multiline = true;
             this.txtStudentName.Name = "txtStudentName";
-            this.txtStudentName.Size = new System.Drawing.Size(211, 21);
+            this.txtStudentName.Size = new System.Drawing.Size(234, 21);
             this.txtStudentName.TabIndex = 38;
             this.txtStudentName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -231,19 +221,19 @@
             this.lblSkills.TabIndex = 39;
             this.lblSkills.Text = "Sponsored by:";
             // 
-            // listBox1
+            // listBoxClasses
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(116, 425);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(215, 95);
-            this.listBox1.TabIndex = 40;
+            this.listBoxClasses.FormattingEnabled = true;
+            this.listBoxClasses.Location = new System.Drawing.Point(62, 365);
+            this.listBoxClasses.Name = "listBoxClasses";
+            this.listBoxClasses.Size = new System.Drawing.Size(235, 95);
+            this.listBoxClasses.TabIndex = 40;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 348);
+            this.label1.Location = new System.Drawing.Point(98, 300);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 13);
             this.label1.TabIndex = 41;
@@ -253,7 +243,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, 409);
+            this.label3.Location = new System.Drawing.Point(108, 349);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 13);
             this.label3.TabIndex = 42;
@@ -266,7 +256,7 @@
             this.ClientSize = new System.Drawing.Size(963, 551);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxClasses);
             this.Controls.Add(this.lblSkills);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
@@ -277,7 +267,6 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.txtSubjectName);
             this.Controls.Add(this.lblTitle);
@@ -303,7 +292,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtSubjectName;
         private System.Windows.Forms.Label lblTitle;
@@ -313,7 +301,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblSkills;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxClasses;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
     }

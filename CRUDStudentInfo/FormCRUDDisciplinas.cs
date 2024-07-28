@@ -3,13 +3,12 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CRUDStudentInfo
 {
     public partial class FormCRUDDisciplinas : Form
     {
-        public event EventHandler TeacherAssigned;
-
         public DataGridView SubjectDataGridView
         {
             get { return dgViewSubject; }
@@ -27,6 +26,8 @@ namespace CRUDStudentInfo
         SqlCommand cmd;
         SqlDataAdapter adapter;
         DataTable dt;
+
+        public event EventHandler TeacherAssigned;
 
         public FormCRUDDisciplinas(int studentId, string studentName)
         {
@@ -52,7 +53,10 @@ namespace CRUDStudentInfo
         {
             using (con = new SqlConnection(cs))
             {
-                string query = "SELECT s.SubjectID, s.SubjectName, ISNULL(t.TeacherName, 'No Teacher Assigned') AS TeacherName FROM Subjects s LEFT JOIN Teachers t ON s.TeacherID = t.TeacherID WHERE s.StudentID = @studentId";
+                string query = "SELECT s.SubjectID, s.SubjectName, ISNULL(t.TeacherName, 'No Teacher Assigned') AS TeacherName " +
+                               "FROM Subjects s " +
+                               "LEFT JOIN Teachers t ON s.TeacherID = t.TeacherID " +
+                               "WHERE s.StudentID = @studentId";
                 adapter = new SqlDataAdapter(query, con);
                 adapter.SelectCommand.Parameters.AddWithValue("@studentId", _studentId);
                 dt = new DataTable();
@@ -62,11 +66,11 @@ namespace CRUDStudentInfo
                 // Set AutoSizeColumnsMode to Fill
                 dgViewSubject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                dgViewSubject.Columns["SubjectID"].FillWeight = 5;  // Less weight for SubjectID
+                // Adjust FillWeight, if necessary
+                dgViewSubject.Columns["SubjectID"].FillWeight = 10;
                 dgViewSubject.Columns["SubjectName"].FillWeight = 15;
                 dgViewSubject.Columns["TeacherName"].FillWeight = 15;
 
-                // Center the text in all columns
                 foreach (DataGridViewColumn column in dgViewSubject.Columns)
                 {
                     column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -87,7 +91,6 @@ namespace CRUDStudentInfo
                 MessageBox.Show("Please enter a subject name.");
                 return;
             }
-
             using (con = new SqlConnection(cs))
             {
                 con.Open();
@@ -221,13 +224,6 @@ namespace CRUDStudentInfo
                 adapter.Fill(dt);
                 dgViewSubject.DataSource = dt;
             }
-        }
-
-        private void btnAssignTeacher_Click(object sender, EventArgs e)
-        {
-            FormCRUDProfessores formTeachers = new FormCRUDProfessores(_studentId, _studentName);
-            formTeachers.TeacherAssigned += FormTeachers_TeacherAssigned;
-            formTeachers.ShowDialog();
         }
 
         private void FormTeachers_TeacherAssigned(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace CRUDStudentInfo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCRUDAlunos()); //FormCRUDAlunos
+            Application.Run(new FormLogin()); //FormCRUDAlunos
         }
     }
 }

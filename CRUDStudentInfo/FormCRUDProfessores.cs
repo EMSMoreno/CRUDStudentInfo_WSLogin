@@ -8,7 +8,6 @@ namespace CRUDStudentInfo
 {
     public partial class FormCRUDProfessores : Form
     {
-        public event EventHandler TeacherAssigned; //Trigger que é disparado para passar o Teacher para a tabela Disciplinas, de forma a atualizar o dataGridView
 
         public DataGridView TeacherDataGridView
         {
@@ -27,6 +26,20 @@ namespace CRUDStudentInfo
         SqlCommand cmd;
         SqlDataAdapter adapter;
         DataTable dt;
+
+        public event EventHandler TeacherAssigned;
+
+        public FormCRUDProfessores(FormCRUDDisciplinas formDisciplinas)
+        {
+            InitializeComponent();
+            formDisciplinas.TeacherAssigned += FormDisciplinas_TeacherAssigned;
+            ShowDataOnGridView();
+        }
+
+        private void FormDisciplinas_TeacherAssigned(object sender, EventArgs e)
+        {
+            LoadSubjectsIntoComboBox();
+        }
 
         public FormCRUDProfessores(int studentId, string studentName)
         {
@@ -75,20 +88,19 @@ namespace CRUDStudentInfo
 
         private void LoadSubjectsIntoComboBox()
         {
-            using (con = new SqlConnection(cs))
-            {
-                string query = "SELECT SubjectID, SubjectName FROM Subjects";
-                adapter = new SqlDataAdapter(query, con);
-                dt = new DataTable();
-                adapter.Fill(dt);
+                using (con = new SqlConnection(cs))
+                {
+                    string query = "SELECT SubjectID, SubjectName FROM Subjects";
+                    adapter = new SqlDataAdapter(query, con);
+                    DataTable dtSubjects = new DataTable();
+                    adapter.Fill(dtSubjects);
 
-                cmbSubjectName.DisplayMember = "SubjectName";
-                cmbSubjectName.ValueMember = "SubjectID";
-                cmbSubjectName.DataSource = dt;
+                    cmbSubjectName.DisplayMember = "SubjectName";
+                    cmbSubjectName.ValueMember = "SubjectID";
+                    cmbSubjectName.DataSource = dtSubjects;
+                    cmbSubjectName.SelectedIndex = -1;
+                }
 
-                // No initial selection on the comboBox
-                cmbSubjectName.SelectedIndex = -1;
-            }
         }
 
         public void ClearAllData()
@@ -120,9 +132,6 @@ namespace CRUDStudentInfo
                 con.Close();
                 MessageBox.Show("Teacher Added Successfully");
 
-                // Trigger the TeacherAssigned event
-                TeacherAssigned?.Invoke(this, EventArgs.Empty);
-
                 ShowDataOnGridView();
                 ClearAllData();
             }
@@ -148,9 +157,6 @@ namespace CRUDStudentInfo
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Teacher Updated Successfully");
-
-                // Trigger the TeacherAssigned event
-                TeacherAssigned?.Invoke(this, EventArgs.Empty);
 
                 ShowDataOnGridView();
                 ClearAllData();
